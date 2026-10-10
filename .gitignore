@@ -12,3 +12,7 @@ __pycache__/
 #   .claude/*
 #   !.claude/agents/
 # to your project's .gitignore instead.
+
+# Gradle
+.gradle/
+build/
