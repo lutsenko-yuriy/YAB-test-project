@@ -10,14 +10,13 @@
 
 Java 21 Spring Boot application built with Gradle; Python tooling under scripts/ drives the YAB agent workflow
 
-No application code exists yet; the Spring Boot app (Gradle, `src/`) is planned. Everything below `src/` is the intended layout.
-
 ## Directory structure
 
 ```
 .claude/commands/     # Slash-command stubs routing to skills/
-.github/workflows/    # CI (tests.yml: Python tooling tests)
+.github/workflows/    # CI (tests.yml: `onboard` job for Python tooling, `app` job for ./gradlew test)
 docs/                 # Spec, architecture, workflows, knowledge base, experiments
+gradle/wrapper/       # Gradle wrapper jar + properties (committed)
 scripts/
 ├── checkup/          # Periodic code-quality checkup scheduler
 ├── notes/            # Knowledge-base index generator
@@ -25,25 +24,29 @@ scripts/
 └── skill_router/     # Routes skills to models and PM/VCS providers (linear, github, files)
 skills/               # Agent skill definitions (build, configure, design, manage, verify, shared)
 styles/               # Communication styles (CONCISE, DETAILED, SCHEMATIC)
+build.gradle.kts      # Build, dependencies, version (version = "X.Y.Z")
+settings.gradle.kts   # Root project name, foojay toolchain resolver
 skill_router.toml     # Project config and provider mapping
 
-src/                  # planned
-├── main/java/        # Spring Boot application code
-├── main/resources/   # application config, static resources
-└── test/java/        # JUnit 5 unit and @SpringBootTest integration tests
+src/
+├── main/java/io/github/lutsenkoyuriy/yabtest/
+│   ├── YabTestApplication.java   # @SpringBootApplication entry point
+│   └── web/                      # HTTP controllers (HomeController: GET / → plain text)
+└── test/java/io/github/lutsenkoyuriy/yabtest/
+    └── web/                      # @SpringBootTest integration tests, mirroring main/
 ```
 
 ## Layers
 
-### Application (planned)
-Standard Spring Boot layering: web/controller → service → repository. Controllers depend on services only; services hold business logic and depend on repository interfaces; repositories handle persistence. No layer imports from the one above it.
+### Application
+Standard Spring Boot layering: web/controller → service → repository. Controllers depend on services only; services hold business logic and depend on repository interfaces; repositories handle persistence. No layer imports from the one above it. Today only `web/` exists; a constant-returning controller needs no service layer, so add `service/` and `repository/` when real logic arrives.
 
 ### Tooling
 `scripts/` is Python standard library only and is independent of the application; skills invoke it via `python3 scripts/...`. Each package keeps its tests in a sibling `tests/` package.
 
 ## Dependencies
 
-- [Spring Boot](https://spring.io/projects/spring-boot) 3 (planned)
-- [JUnit 5](https://junit.org/junit5/) (planned)
-- [Gradle](https://gradle.org/) wrapper (planned)
+- [Spring Boot](https://spring.io/projects/spring-boot) 4.1 (`spring-boot-starter-webmvc`, `spring-boot-starter-test`)
+- JUnit Jupiter (version managed by Spring Boot)
+- [Gradle](https://gradle.org/) 9.6 via the committed wrapper; JDK 21 toolchain auto-provisioned by the foojay resolver plugin
 - Tooling: Python 3 standard library only
