@@ -4,6 +4,12 @@ A record of all versioned releases. For planned work and known issues, see @docs
 
 ---
 
+## [0.1.2] — 2026-10-10 (PR #8 merged)
+
+### Added / Changed / Fixed
+- [meta] YTP-2: project-specific README (CI and licence badges, what the app does, how to build/run/test, contribution guidelines, YAB link) replaces the template README
+- [meta] YTP-2: session start in `AGENTS.md` now reads `[providers].pm` first, so `YTP-N` resolves to the configured PM tool (GitHub issue #N) instead of any other loaded PM MCP
+
 ## [0.1.1] — 2026-10-10 (PR #6 merged)
 
 ### Added / Changed / Fixed
