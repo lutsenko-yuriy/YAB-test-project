@@ -10,12 +10,6 @@ YAB-test-project — A Java Spring sandbox project for trying out the YAB multi-
 
 ## Features
 
-<!-- List features here. Example format:
-
-### Feature 1 — <name>
-- The user must be able to...
-- The user can optionally...
-
-### Feature 2 — <name>
-- ...
--->
+### Feature 1 — Home page
+- Opening the home page (`/`) shows exactly: `I am somehow alive! Thank you, Yuriy's agentic boyz!`
+- Plain text (black on white), no styling and no other content.

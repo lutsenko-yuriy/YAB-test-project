@@ -58,9 +58,10 @@ Details and directory layout: @docs/ARCHITECTURE.md. Languages and tooling: docs
 
 ## Common Commands
 
-- **Run tests:** `./gradlew test` (app, once the Gradle project exists); `python3 -m unittest discover -s scripts -t .` (tooling)
+- **Run tests:** `./gradlew test` (app); `python3 -m unittest discover -s scripts -t .` (tooling)
 - **Lint:** none configured
 - **Build:** `./gradlew build`
+- **Run app:** `./gradlew bootRun` (http://localhost:8080/)
 - **Install dependencies:** resolved by `./gradlew build` (Gradle wrapper); tooling needs only Python 3.11+
 
 ## Code style
