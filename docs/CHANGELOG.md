@@ -4,6 +4,12 @@ A record of all versioned releases. For planned work and known issues, see @docs
 
 ---
 
+## [0.1.1] — 2026-10-10 (PR #6 merged)
+
+### Added / Changed / Fixed
+- [meta] YTP-4: skill_router warns when `skill_router.toml` can't be read on Python < 3.11, and exits 2 with a clear message when a `context:` provider can't supply context (was `Unknown provider 'pm'` / `AttributeError`)
+- [meta] YTP-5: removed the YAB template's own entries from this CHANGELOG (PR #7)
+
 ## [0.1.0] — 2026-10-10 (PR #3 merged)
 
 ### Added / Changed / Fixed
