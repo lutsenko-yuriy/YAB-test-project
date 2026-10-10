@@ -8,3 +8,8 @@ Generated from `bookmarks:` frontmatter in `docs/knowledge/notes/*.md`. Run `pyt
 
 
 ## By bookmark
+
+## Reviewed — nothing noteworthy
+
+- [YTP-1: Spring Boot project skeleton with "alive" home page](YTP-1.md)
+- [YTP-5: Remove YAB template entries from CHANGELOG [Unreleased]](YTP-5.md)

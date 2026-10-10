@@ -4,8 +4,6 @@ A record of all versioned releases. For planned work and known issues, see @docs
 
 ---
 
-## [Unreleased]
-
 ## [0.1.0] — 2026-10-10 (PR #3 merged)
 
 ### Added / Changed / Fixed
