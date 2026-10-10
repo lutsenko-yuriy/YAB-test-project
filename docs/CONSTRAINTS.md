@@ -1,21 +1,17 @@
-<!-- yab:template -->
 # Project Constraints
-
-<!-- Delete the marker line above once this file is filled in; `onboard.py check` reports it as still a template while it is present.
-     Standing constraints that agents and reviewers weigh when evaluating trade-offs, especially in research tickets. -->
 
 ## Team & capacity
 
-- <e.g. team size, who reviews, what support capacity exists>
+- Solo developer working with AI agents; the developer does all reviews.
 
 ## Stage
 
-- <e.g. pre-launch vs. in production; what to optimise for>
+- Sandbox / pre-launch: experimental, no users. Optimise for learning the workflow and speed over robustness.
 
 ## Environment
 
-- <e.g. available devices, test environments, access limits>
+- Develop and run locally on macOS; GitHub Actions is the only shared environment. No staging or production.
 
 ## Budget & compliance
 
-- <e.g. cost ceilings, licensing, privacy or regulatory rules>
+- Stay within free tiers (GitHub Actions etc.). MIT licence. No personal data handled.

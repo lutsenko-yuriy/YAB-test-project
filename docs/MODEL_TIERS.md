@@ -32,6 +32,10 @@ This project describes what each skill needs from a model using two axes: **Effo
 |---|---|---|---|
 | `calibrate` | THOROUGH | ARCHITECTURAL | Reasoning about model strengths requires the most capable model available |
 | `onboard` | FOCUSED | ARCHITECTURAL | Infers the stack across the repo and fixes project conventions; runs inline in the session |
+| `skill-creator` | FOCUSED | ARCHITECTURAL | Designs or restructures a skill's instructions and resources |
+| `debrief` | FOCUSED | ARCHITECTURAL | Retrospective that proposes workflow and skill improvements |
+| `migrate-provider` | RAPID | TACTICAL | Switches a tool role to another provider in config |
+| `note` | RAPID | MECHANICAL | Captures a quick observation into the knowledge base |
 | `style` | RAPID | MECHANICAL | Load and apply a communication style definition |
 
 ### Product skills — operate on the codebase and product
@@ -39,11 +43,15 @@ This project describes what each skill needs from a model using two axes: **Effo
 | Skill | Effort | Reasoning | Why |
 |---|---|---|---|
 | `plan` | THOROUGH | ARCHITECTURAL | Full codebase read, cross-file design decisions, long-horizon planning |
+| `checkup` | THOROUGH | ARCHITECTURAL | Periodic codebase-wide code-quality walk across non-mechanical dimensions |
 | `audit` | THOROUGH | TACTICAL | Exhaustive runtime, migration, and edge-case analysis |
 | `review` | FOCUSED | ARCHITECTURAL | Targeted architectural review of a PR/MR diff |
 | `analyze` | FOCUSED | ARCHITECTURAL | Cross-cutting analytics reasoning scoped to one feature |
 | `experiment` | FOCUSED | ARCHITECTURAL | Design a product experiment: hypothesis, metrics, variant spec |
+| `brief` | FOCUSED | ARCHITECTURAL | Clarifying dialog that scopes a feature into a ticket |
+| `research` | FOCUSED | ARCHITECTURAL | Thesis/antithesis/synthesis over cited evidence |
 | `implement` | FOCUSED | TACTICAL | Implement a scoped work unit correctly and completely |
+| `draft-scenarios` | FOCUSED | TACTICAL | Writes red integration test stubs from the ticket spec |
 | `ship` | RAPID | TACTICAL | Structured housekeeping: close issues, update docs, bump version, merge |
 | `summarize` | RAPID | MECHANICAL | Structured PM data fetch and format |
 
@@ -55,7 +63,7 @@ Models available to this project (set during `/onboard`):
 
 | Model | Access |
 |---|---|
-| {{AVAILABLE_MODELS}} | |
+| claude-fable-5-1, claude-opus-5-5, claude-sonnet-5-5, claude-haiku-4-5, qwen3.6:latest | |
 
 The `calibrate` skill reads this list and proposes the mapping below. Re-run `calibrate` whenever the available models change.
 
@@ -63,9 +71,18 @@ The `calibrate` skill reads this list and proposes the mapping below. Re-run `ca
 
 ## Active mapping
 
-_Not yet configured — invoke the `calibrate` skill to populate this section._
+_Last updated: 2026-10-10._
 
-Once configured, the table will include a `Claude Code alias` column (`opus` / `sonnet` / `lm-studio`) used by command stubs to route each skill to the correct model.
+| Effort | Reasoning | Model | Claude Code alias |
+|---|---|---|---|
+| THOROUGH | ARCHITECTURAL | claude-opus-5-5 | `opus` |
+| THOROUGH | TACTICAL | claude-opus-5-5 | `opus` |
+| FOCUSED | ARCHITECTURAL | claude-sonnet-5-5 | `sonnet` |
+| FOCUSED | TACTICAL | claude-sonnet-5-5 | `sonnet` |
+| RAPID | TACTICAL | claude-haiku-4-5 | `haiku` |
+| RAPID | MECHANICAL | claude-haiku-4-5 | `haiku` |
+
+Unmapped: `claude-fable-5-1` (tier relative to Opus 5.5 unconfirmed; no command-stub alias defined) and `qwen3.6:latest` (Ollama; the router only talks to LM Studio).
 
 ---
 

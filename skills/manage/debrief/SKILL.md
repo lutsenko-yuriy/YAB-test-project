@@ -24,7 +24,7 @@ This skill produces workflow improvements and a retrospective record, not code.
 
 Ask one open question:
 
-> "Let's debrief {{ISSUE_PREFIX}}-XX. How did it go overall?"
+> "Let's debrief YTP-XX. How did it go overall?"
 
 ### 3. Iterate — one question at a time
 
@@ -61,12 +61,12 @@ Write only the approved changes to their respective files. Skip any the user dec
 
 ### 6. Write to the knowledge base
 
-Append a dated block to the `## Debrief summary` section of `docs/knowledge/notes/{{ISSUE_PREFIX}}-XX.md`.
+Append a dated block to the `## Debrief summary` section of `docs/knowledge/notes/YTP-XX.md`.
 
 **If the file does not exist:** create it with this structure first:
 
 ```markdown
-# {{ISSUE_PREFIX}}-XX: <ticket title>
+# YTP-XX: <ticket title>
 
 ## Notes
 
@@ -96,16 +96,16 @@ Create a branch from the latest `origin/main`, stage all changed files (approved
 
 ```bash
 git fetch origin
-git checkout -b feature/{{ISSUE_PREFIX}}-XX-debrief origin/main
+git checkout -b feature/YTP-XX-debrief origin/main
 git add <files>
-git commit -m "meta: debrief {{ISSUE_PREFIX}}-XX — <short summary>"
+git commit -m "meta: debrief YTP-XX — <short summary>"
 ```
 
-PR title: `meta: debrief {{ISSUE_PREFIX}}-XX — <short summary>`. Include the PR URL in the report (step 8).
+PR title: `meta: debrief YTP-XX — <short summary>`. Include the PR URL in the report (step 8).
 
 ### 8. Report back
 
-Confirm: knowledge base updated at `docs/knowledge/notes/{{ISSUE_PREFIX}}-XX.md`, list any workflow/skill files changed (or "no file changes").
+Confirm: knowledge base updated at `docs/knowledge/notes/YTP-XX.md`, list any workflow/skill files changed (or "no file changes").
 
 ---
 

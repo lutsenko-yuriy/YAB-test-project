@@ -1,27 +1,24 @@
-<!-- yab:template -->
 # Code Style
-
-<!-- Delete the marker line above once this file is filled in; `onboard.py check` reports it as still a template while it is present. -->
 
 ## Base standard
 
-<!-- Name the published style guide for EACH language in docs/TECH_STACK.md "## Languages", with a link.
-     Example: "Python: PEP 8. Shell: Google Shell Style Guide." Everything below adds to or clarifies it. -->
-
-<language>: <style guide link>
+Java: [Google Java Style Guide](https://google.github.io/styleguide/javaguide.html)
+Python: [PEP 8](https://peps.python.org/pep-0008/)
+Shell: [Google Shell Style Guide](https://google.github.io/styleguide/shellguide.html)
 
 ## Formatting
 
-<!-- Formatter, line length, and the command to run before committing. State what CI enforces. -->
+No formatter configured yet; CI enforces none. Follow the base standard by hand until one is added (e.g. google-java-format via Spotless for Java).
 
 ## Linting
 
-<!-- Linter and the rules or configuration file that apply. -->
+No linter configured. Python tests run with `python -W error`, so warnings fail CI.
 
 ## Naming and structure
 
-<!-- Project-specific conventions: file naming, module layout, naming of tests. -->
+- Java: Spring Boot conventions; packages under `src/main/java`, tests mirror them under `src/test/java` with a `Test` suffix (`FooServiceTest`).
+- Python: snake_case modules under `scripts/*/`; tests in a sibling `tests/` package named `test_*.py` (`unittest`).
 
 ## Comments
 
-<!-- Rules for code comments, e.g. explain why not what; one concise line. -->
+Explain why, not what; keep them to one concise line. No commented-out code.

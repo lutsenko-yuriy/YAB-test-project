@@ -1,29 +1,27 @@
-<!-- yab:template -->
 # Tech Stack
-
-<!-- Delete the marker line above once this file is filled in; `onboard.py check` reports it as still a template while it is present.
-     Agents read this file to know which languages, tools and platforms the project uses. -->
 
 ## Languages
 
-<!-- One row per language, name in the first column. Every language listed here must also be named in
-     docs/CODE_STYLE.md under "## Base standard" (exact, case-sensitive match). -->
-
 | Language | Version | Used for |
 |---|---|---|
-| <language> | <version> | <e.g. application code, scripts> |
+| Java | 21 (planned; chosen at onboarding, no build file yet) | Application code (Spring Boot) |
+| Python | 3.9–3.12 (`.github/workflows/tests.yml`; `onboard.py check`/`apply` need 3.11+) | YAB workflow tooling under `scripts/` |
+| Shell | POSIX sh / bash (`scripts/onboard/gate.sh`) | Onboarding gate hook |
 
 ## Frameworks and libraries
 
-- <framework or key library, with a link>
+- [Spring Boot](https://spring.io/projects/spring-boot) 3: application framework (planned)
+- [JUnit 5](https://junit.org/junit5/): Java tests (planned, Spring Boot default)
+- Python standard library only (`unittest`, `tomllib`) for tooling
 
 ## Platforms
 
-- <target platforms, runtimes or deployment environments>
+- JVM 21 server application (planned)
+- macOS developer machine; GitHub Actions `ubuntu-latest` for CI
 
 ## Tooling
 
-- **Build / package manager:** <tool>
-- **Test runner:** <tool>
-- **Linter / formatter:** <tool>
-- **CI:** <service>
+- **Build / package manager:** Gradle via wrapper (`./gradlew`, planned)
+- **Test runner:** `./gradlew test` (Java); `python -m unittest` (tooling)
+- **Linter / formatter:** none configured
+- **CI:** GitHub Actions (`.github/workflows/tests.yml`)

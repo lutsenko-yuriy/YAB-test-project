@@ -17,7 +17,7 @@ _What was decided, stated as a clear, actionable sentence._
 | | |
 
 ## Related ticket
-{{ISSUE_PREFIX}}-XX
+YTP-XX
 
 ## Date
 YYYY-MM-DD

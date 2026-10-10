@@ -1,4 +1,4 @@
-## Analytics plan — {{ISSUE_PREFIX}}-XX: <title>
+## Analytics plan — YTP-XX: <title>
 
 ### Screen views
 | Screen name | Trigger | Properties |

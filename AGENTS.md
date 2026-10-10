@@ -4,7 +4,7 @@ This file provides guidance to AI coding agents (Claude Code, Codex, Cursor, Ope
 
 ## Project Overview
 
-{{PROJECT_NAME}} — {{PROJECT_DESCRIPTION}}
+YAB-test-project — A Java Spring sandbox project for trying out the YAB multi-agent workflow
 
 Full product specifications: docs/PRODUCT_SPEC.md
 
@@ -52,20 +52,20 @@ Full product specifications: docs/PRODUCT_SPEC.md
 
 ## Architecture
 
-{{ARCHITECTURE_SUMMARY}}
+Java 21 Spring Boot application built with Gradle; Python tooling under scripts/ drives the YAB agent workflow
 
 Details and directory layout: @docs/ARCHITECTURE.md. Languages and tooling: docs/TECH_STACK.md.
 
 ## Common Commands
 
-- **Run tests:** `<test command>`
-- **Lint:** `<lint command>`
-- **Build:** `<build command>`
-- **Install dependencies:** `<install command>`
+- **Run tests:** `./gradlew test` (app, once the Gradle project exists); `python3 -m unittest discover -s scripts -t .` (tooling)
+- **Lint:** none configured
+- **Build:** `./gradlew build`
+- **Install dependencies:** resolved by `./gradlew build` (Gradle wrapper); tooling needs only Python 3.11+
 
 ## Code style
 
-{{CODE_STYLE}}
+Java: Google Java Style Guide. Python: PEP 8. Shell: Google Shell Style Guide. No formatter or linter configured yet.
 
 See `docs/CODE_STYLE.md` for the full rules.
 

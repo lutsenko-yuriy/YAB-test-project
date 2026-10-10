@@ -6,7 +6,7 @@
 
 ## Overview
 
-{{PROJECT_NAME}} — {{PROJECT_DESCRIPTION}}
+YAB-test-project — A Java Spring sandbox project for trying out the YAB multi-agent workflow
 
 ## Features
 
