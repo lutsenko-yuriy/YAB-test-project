@@ -1,6 +1,9 @@
+import io
 import tempfile
 import unittest
+from contextlib import redirect_stderr
 from pathlib import Path
+from unittest.mock import patch
 
 from skill_router.config import load_config
 
@@ -30,6 +33,21 @@ class ProjectIdTests(unittest.TestCase):
 
     def test_no_project_id_anywhere(self):
         self.assertNotIn("linear", config_from('[providers]\npm = "linear"\n').provider_settings)
+
+
+class MissingTomllibTests(unittest.TestCase):
+    def test_warns_when_config_exists_but_cannot_be_read(self):
+        stderr = io.StringIO()
+        with patch("skill_router.config.tomllib", None), redirect_stderr(stderr):
+            cfg = config_from('[providers]\npm = "github"\n')
+        self.assertEqual(cfg.provider_roles, {})
+        self.assertIn("Python 3.11+", stderr.getvalue())
+
+    def test_silent_when_no_config_file(self):
+        stderr = io.StringIO()
+        with patch("skill_router.config.tomllib", None), redirect_stderr(stderr):
+            load_config("does/not/exist.toml")
+        self.assertEqual(stderr.getvalue(), "")
 
 
 if __name__ == "__main__":
