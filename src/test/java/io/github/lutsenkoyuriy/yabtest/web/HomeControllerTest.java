@@ -1,18 +1,38 @@
 package io.github.lutsenkoyuriy.yabtest.web;
 
-import org.junit.jupiter.api.Test;
+import static org.assertj.core.api.Assertions.assertThat;
 
+import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpRequest;
+import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
+import org.springframework.http.MediaType;
+
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class HomeControllerTest {
 
+  @Value("${local.server.port}")
+  private int port;
+
   @Test
-  void homePageShowsAliveMessage() {
-    // TODO: 1. Start the whole application on a random port
-    //          (@SpringBootTest(webEnvironment = RANDOM_PORT)).
-    // TODO: 2. Send GET / with the JDK HttpClient.
-    // TODO: 3. Check that the status is 200.
-    // TODO: 4. Check that the Content-Type is text/plain with charset UTF-8.
-    // TODO: 5. Check that the body is exactly
-    //          "I am somehow alive! Thank you, Yuriy's agentic boyz!",
-    //          with no HTML and no trailing content.
+  void homePageShowsAliveMessage() throws Exception {
+    HttpResponse<String> response =
+        HttpClient.newHttpClient()
+            .send(
+                HttpRequest.newBuilder(URI.create("http://localhost:" + port + "/")).GET().build(),
+                HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+
+    assertThat(response.statusCode()).isEqualTo(200);
+    MediaType contentType =
+        MediaType.parseMediaType(response.headers().firstValue("Content-Type").orElseThrow());
+    assertThat(contentType.isCompatibleWith(MediaType.TEXT_PLAIN)).isTrue();
+    assertThat(contentType.getCharset()).isEqualTo(StandardCharsets.UTF_8);
+    assertThat(response.body())
+        .isEqualTo("I am somehow alive! Thank you, Yuriy's agentic boyz!");
   }
 }
